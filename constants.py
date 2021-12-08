@@ -42,31 +42,32 @@ search = '[class="v-header-link external"]'
 page_source_one = "It's a lightweight and free streaming and game recording software for PCs that lets you capture and stream gameplay with one click."
 page_source_two = "Check out the pricing options of Movavi Screen Recorder and choose the license type that suits your purpose. Buy the program and enjoy the benefits!"
 
+loc_ui = '#app > header > nav > div > div.v-main-menu-sidebar > ul > li:nth-child(1) > a > span'
+# loc_ui = '#app > header > nav > div > div.v-main-menu-sidebar > ul > li:nth-child(1)'
+# loc_ui = '#app > header > nav > div > div.v-main-menu-sidebar > ul > li:nth-child(1) > a > svg.icon.shevron-icon'
 
 
-
-
-# Сообщения ошибок
-ok_messages = {
-    site: "Мы на главной"
-}
-
-errors_messages = {
-    site: "Что то пошло не так"
-}
-
-ok_button = {
-    site: "Кнопка есть"
-}
-
-not_button = {
-    site: "Кнопки нет"
-}
-
-ok_bunner = {
-    site: "Баннер есть"
-}
-
-not_bunner = {
-    site: "Баннера нет"
-}
+# # Сообщения ошибок
+# ok_messages = {
+#     site: "Мы на главной"
+# }
+#
+# errors_messages = {
+#     site: "Что то пошло не так"
+# }
+#
+# ok_button = {
+#     site: "Кнопка есть"
+# }
+#
+# not_button = {
+#     site: "Кнопки нет"
+# }
+#
+# ok_bunner = {
+#     site: "Баннер есть"
+# }
+#
+# not_bunner = {
+#     site: "Баннера нет"
+# }
