@@ -14,7 +14,6 @@ class MovaviLocators:
     LOCATOR_SEARCH = SEARCH
     LOCATOR_MN_PAGE = MAIN_TEXT
     LOCATOR_UI = LOC_UI
-    LOCATOR_TEXT_UI = UN
 
 
 class MainPage(BasePage):
@@ -37,30 +36,10 @@ class MainPage(BasePage):
             .key_up(Keys.CONTROL) \
             .perform()
 
-    def act_ui(self, tag_name):
-        element = self.chrome.find_element_by_partial_link_text(tag_name)
-        ActionChains(self.chrome) \
-            .move_to_element(element) \
-            .key_down(Keys.CONTROL) \
-            .click(element) \
-            .key_up(Keys.CONTROL) \
-            .perform()
-
     def handle(self):
         default_handle = self.chrome.window_handles
         self.chrome.switch_to.window(default_handle[1])
         return default_handle
-
-    def switch_to(self):
-        self.chrome.switch_to.window(self.handle()[0])
-        default_handle = self.chrome.current_window_handle
-        handles = list(self.chrome.window_handles)
-        assert len(handles) > 1
-        handles.remove(default_handle)
-        assert len(handles) > 0
-        self.chrome.switch_to_window(handles[0])
-        self.chrome.close()
-        self.chrome.switch_to_window(default_handle)
 
     # Проверяем ссылки в хедере, кроме поиска
     def test_main_page(self):
@@ -72,29 +51,40 @@ class MainPage(BasePage):
             self.handle()
             url = self.chrome.current_url
             assert (ASRT[0] in url) or (ASRT[1] in url) or (ASRT[2] in url) or (ASRT[3] in url) or (ASRT[4] in url)
-            self.switch_to()
+            self.chrome.switch_to.window(self.handle()[0])
+            default_handle = self.chrome.current_window_handle
+            handles = list(self.chrome.window_handles)
+            assert len(handles) > 1
+            handles.remove(default_handle)
+            assert len(handles) > 0
+            self.chrome.switch_to_window(handles[0])
+            self.chrome.close()
+            self.chrome.switch_to_window(default_handle)
 
     # Проверяем кнопку поиска в хедере
     def site_search(self):
-        self.wait_of_element_located(MovaviLocators.LOCATOR_HAD_SEARCH).click()
-        self.wait_of_element_located(MovaviLocators.LOCATOR_ENTR_FIRLD).send_keys(TEXT_SEARCH)
+        element = self.wait_of_element_located(MovaviLocators.LOCATOR_HAD_SEARCH)
+        element.click()
+        entry = self.wait_of_element_located(MovaviLocators.LOCATOR_ENTR_FIRLD)
+        entry.send_keys(TEXT_SEARCH)
         self.act_second()
         self.handle()
         time.sleep(3)
         body_text = self.chrome.find_element_by_tag_name('body').text
         assert (PAGE_SORCE_ONE and PAGE_SORCE_TWO) in body_text, "страница не соответствует запросу"
         self.chrome.switch_to.window(self.handle()[0])
-        self.switch_to()
+        default_handle = self.chrome.current_window_handle
+        handles = list(self.chrome.window_handles)
+        assert len(handles) > 1
+        handles.remove(default_handle)
+        assert len(handles) > 0
+        self.chrome.switch_to_window(handles[0])
+        self.chrome.close()
+        self.chrome.switch_to_window(default_handle)
 
-    # Проверяем все ui
     def main_ui(self):
-        self.wait_of_element_located(MovaviLocators.LOCATOR_UI).click()
+        ui = self.wait_of_element_located(MovaviLocators.LOCATOR_UI).click()
         time.sleep(2)
-        for dikt_ui_key in DICT_UN:
-            tag_name = DICT_UN[dikt_ui_key]
-            self.act_ui(tag_name)
-            self.handle()
-            time.sleep(3)
-            url = self.chrome.current_url
-            assert (DICT_HREF[dikt_ui_key] in url)
-            self.switch_to()
+
+        self.act_second()
+        # find_element_by_partial_link_text(constants.MENU_VIDEO_ITEM).click()
