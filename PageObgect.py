@@ -14,10 +14,6 @@ class MovaviLocators:
     LOCATOR_SEARCH = SEARCH
     LOCATOR_MN_PAGE = MAIN_TEXT
     LOCATOR_UI = LOC_UI
-<<<<<<< HEAD
-=======
-    LOCATOR_TEXT_UI = UN
->>>>>>> 8fc7f33e22c59855cc300988995020152e56c608
 
 
 class MainPage(BasePage):
@@ -83,11 +79,7 @@ class MainPage(BasePage):
         self.wait_of_element_located(MovaviLocators.LOCATOR_ENTR_FIRLD).send_keys(TEXT_SEARCH)
         self.act_second()
         self.handle()
-<<<<<<< HEAD
         time.sleep(2)
-=======
-        time.sleep(3)
->>>>>>> 8fc7f33e22c59855cc300988995020152e56c608
         body_text = self.chrome.find_element_by_tag_name('body').text
         assert (PAGE_SORCE_ONE and PAGE_SORCE_TWO) in body_text, "страница не соответствует запросу"
         self.chrome.switch_to.window(self.handle()[0])
@@ -95,7 +87,6 @@ class MainPage(BasePage):
 
     # Проверяем все ui
     def main_ui(self):
-<<<<<<< HEAD
         for locator in LOC_UI:
             self.wait_of_element_located_text(locator).click()
             time.sleep(1)
@@ -119,15 +110,3 @@ class MainPage(BasePage):
                 url = self.chrome.current_url
                 assert (DICT_HREF[dikt_key] in url)
                 self.switch_to()
-=======
-        self.wait_of_element_located(MovaviLocators.LOCATOR_UI).click()
-        time.sleep(2)
-        for dikt_ui_key in DICT_UN:
-            tag_name = DICT_UN[dikt_ui_key]
-            self.act_ui(tag_name)
-            self.handle()
-            time.sleep(3)
-            url = self.chrome.current_url
-            assert (DICT_HREF[dikt_ui_key] in url)
-            self.switch_to()
->>>>>>> 8fc7f33e22c59855cc300988995020152e56c608
