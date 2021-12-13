@@ -38,6 +38,7 @@ PAGE_SORCE_ONE = "It's a lightweight and free streaming and game recording softw
 PAGE_SORCE_TWO = "Check out the pricing options of Movavi Screen Recorder and choose the license type that suits your purpose. Buy the program and enjoy the benefits!"
 
 # раскрыввем ui
+<<<<<<< HEAD
 # LOC_UI = '#app > header > nav > div > div.v-main-menu-sidebar > ul > li:nth-child(1) > a > span'
 # список разделов из выпадающего списка
 # LOC_UI = ['Video', 'Screen Recording', 'Photo', 'For Work', 'For Education']
@@ -113,6 +114,37 @@ DICT_HREF = {'Unlimited': 'https://www.movavi.com/suite-unlimited',
              'PDFChef_Scanner': 'https://pdfchef.com/pdfchef-scanner.html',
              'Students_and_Teachers': 'https://www.edu.movavi.com/',
              'Schools_and_Universities': 'https://www.edu.movavi.com/academic-for-schools'}
+=======
+LOC_UI = '#app > header > nav > div > div.v-main-menu-sidebar > ul > li:nth-child(1) > a > span'
+
+# нажимаем на продукт из ui
+UN = {"Unlimited", "Video Suite", "Video Editor Plus", "Slideshow Maker", "Video Suite Business", "Video Converter", "Clips", "Effects Store", "Stock Video", "Stock Audio", "Stock Photos"}
+DICT_UN = {'Unlimited': 'Unlimited',
+           'Video_Suite': 'Video Suite',
+           'Video_Editor_Plus': 'Video Editor Plus',
+           'Slideshow_Maker': 'Slideshow Maker',
+           'Video_Suite_Business': 'Video Suite Business',
+           'Video_Converter': 'Video Converter',
+           'Clips': 'Clips',
+           'Effects_Store': 'Effects Store',
+           'Stock_Video': 'Stock Video',
+           'Stock_Audio': 'Stock Audio',
+           'Stock_Photos': 'Stock Photos'}
+
+DICT_HREF = {'Unlimited': 'https://www.movavi.com/suite-unlimited',
+           'Video_Suite': 'https://www.movavi.com/video-suite-new',
+           'Video_Editor_Plus': 'https://www.movavi.com/videoeditor',
+           'Slideshow_Maker': 'https://www.movavi.com/slideshow-maker',
+           'Video_Suite_Business': 'https://www.movavi.com/business-suite.html',
+           'Video_Converter': 'https://www.movavi.com/movavi-video-converter',
+           'Clips': 'https://www.movavi.com/android-video-editor',
+           'Effects_Store': 'https://effects-store.movavi.com/',
+           'Stock_Video': 'https://www.movavi.com/stock-video-footage',
+           'Stock_Audio': 'https://www.movavi.com/stock-music',
+           'Stock_Photos': 'https://www.movavi.com/stock-photos'}
+
+
+>>>>>>> 8fc7f33e22c59855cc300988995020152e56c608
 
 # # Сообщения ошибок
 # ok_messages = {

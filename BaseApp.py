@@ -18,11 +18,14 @@ class BasePage:
             EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector)),
             message=f"Can't find element by locator {css_selector}")
 
+<<<<<<< HEAD
     # def wait_of_elements_located(self, css_selector, time=10):
     #     return WebDriverWait(self.chrome, time).until(
     #         EC.visibility_of_any_elements_located((By.CSS_SELECTOR, css_selector)),
     #         message=f"Can't find element by locator {css_selector}")
 
+=======
+>>>>>>> 8fc7f33e22c59855cc300988995020152e56c608
     def wait_of_element_located_text(self, css_selector, time=10):
         return WebDriverWait(self.chrome, time).until(
             EC.visibility_of_element_located((By.PARTIAL_LINK_TEXT, css_selector)),
