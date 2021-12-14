@@ -34,8 +34,8 @@ HEADER_SEARCH = '[class="v-header-search"]'
 ENTRY_FIELD = 'div label input[placeholder="Search on movavi.com"]'
 TEXT_SEARCH = "screen recorder"
 SEARCH = '[class="v-header-link external"]'
-PAGE_SORCE_ONE = "It's a lightweight and free streaming and game recording software for PCs that lets you capture and stream gameplay with one click."
-PAGE_SORCE_TWO = "Check out the pricing options of Movavi Screen Recorder and choose the license type that suits your purpose. Buy the program and enjoy the benefits!"
+PAGE_SORCE_ONE = "Screen Recorder for Perfect Captures - Movavi"
+# PAGE_SORCE_TWO = "screen recorders for"
 
 # раскрыввем ui
 # LOC_UI = '#app > header > nav > div > div.v-main-menu-sidebar > ul > li:nth-child(1) > a > span'

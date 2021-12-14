@@ -81,7 +81,9 @@ class MainPage(BasePage):
         self.handle()
         time.sleep(2)
         body_text = self.chrome.find_element_by_tag_name('body').text
-        assert (PAGE_SORCE_ONE and PAGE_SORCE_TWO) in body_text, "страница не соответствует запросу"
+        print(type(body_text))
+        print(body_text)
+        assert PAGE_SORCE_ONE in body_text, "страница не соответствует запросу"
         self.chrome.switch_to.window(self.handle()[0])
         self.switch_to()
 
