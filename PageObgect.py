@@ -1,9 +1,6 @@
-from BaseApp import BasePage
-from constants import *
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.by import By
+from lib.basepage import BasePage
+from lib.constants import *
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
 
@@ -20,6 +17,14 @@ class MainPage(BasePage):
 
     def act_first(self, tag_name):
         element = self.wait_of_element_located(tag_name)
+        ActionChains(self.chrome) \
+            .move_to_element(element) \
+            .key_down(Keys.CONTROL) \
+            .click(element) \
+            .key_up(Keys.CONTROL) \
+            .perform()
+    def act_first_for_links(self, tag_name):
+        element = self.wait_of_element_click(tag_name)
         ActionChains(self.chrome) \
             .move_to_element(element) \
             .key_down(Keys.CONTROL) \
@@ -81,8 +86,6 @@ class MainPage(BasePage):
         self.handle()
         time.sleep(2)
         body_text = self.chrome.find_element_by_tag_name('body').text
-        print(type(body_text))
-        print(body_text)
         assert PAGE_SORCE_ONE in body_text, "страница не соответствует запросу"
         self.chrome.switch_to.window(self.handle()[0])
         self.switch_to()
@@ -91,7 +94,7 @@ class MainPage(BasePage):
     def main_ui(self):
         for locator in LOC_UI:
             self.wait_of_element_located_text(locator).click()
-            time.sleep(1)
+            time.sleep(3)
             if locator == 'Video':
                 dict_page = DICT_VIDEO
             elif locator == 'Screen Recording':
@@ -112,3 +115,5 @@ class MainPage(BasePage):
                 url = self.chrome.current_url
                 assert (DICT_HREF[dikt_key] in url)
                 self.switch_to()
+
+

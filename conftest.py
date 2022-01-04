@@ -1,7 +1,5 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 @pytest.fixture(scope="session")
@@ -21,21 +19,3 @@ def chrome():
     chrome = webdriver.Chrome(options=chrome_options)
     yield chrome
     chrome.quit()
-
-
-@pytest.fixture
-def set_ip():
-    '''
-    Фикстура для настройки заголовка для изменения ip
-    принимает на вход драйвер и ip в виде строки
-    '''
-
-    def set(chrome, ip):
-        chrome.get('chrome-extension://idgpnmonknjnojddfkpgkljpfnnfcklj/icon.png')
-
-        script = "localStorage.setItem('profiles', JSON.stringify([{title: 'Selenium', hideComment: true, appendMode: '', headers: ["
-        script += "{enabled: true, name: 'X-Forwarded-For', value: '" + ip + "', comment: ''},"
-        script += "],respHeaders:[],filters:[]}]));"
-
-        chrome.execute_script(script)
-    return set

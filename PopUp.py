@@ -13,6 +13,7 @@ class MovaviLocators:
     LOCATOR_UI = LOC_UI
 
 
+
 class MainPage(BasePage):
 
     def act_first(self, tag_name):
@@ -63,28 +64,38 @@ class MainPage(BasePage):
         assert len(handles) > 1
         handles.remove(default_handle)
         assert len(handles) > 0
-        self.chrome.switch_to_window(handles[0])
+        self.chrome.switch_to.window(handles[0])
         self.chrome.close()
-        self.chrome.switch_to_window(default_handle)
+        self.chrome.switch_to.window(default_handle)
 
     def close_last_tab(self):
-        if (len(self.chrome.window_handles) == 2):
+        if len(self.chrome.window_handles) == 2:
             self.chrome.switch_to.window(window_name=self.chrome.window_handles[1])
             time.sleep(1)
             self.chrome.close()
             self.chrome.switch_to.window(window_name=self.chrome.window_handles[0])
 
-    # # Проверяем ссылки в хедере, кроме поиска
-    # def test_main_page(self):
-    #     main_page = self.wait_of_element_located(MovaviLocators.LOCATOR_MN_PAGE)
-    #     assert main_page.text == TITLE_TXT
-    #     for dict_window_key in DICT_WINDOWS:
-    #         tag_name = DICT_WINDOWS[dict_window_key]
-    #         self.act_first(tag_name)
-    #         self.handle()
-    #         url = self.chrome.current_url
-    #         assert (ASRT[0] in url) or (ASRT[1] in url) or (ASRT[2] in url) or (ASRT[3] in url) or (ASRT[4] in url)
-    #         self.switch_to()
+    # Проверяем ссылки в хедере, кроме поиска
+    def test_main_page(self):
+        main_page = self.wait_of_element_located(MovaviLocators.LOCATOR_MN_PAGE)
+        assert main_page.text == TITLE_TXT
+        try:
+
+            driver.switch_to.frame(element)
+            self.chrome.switch_to.frame("iframe")
+            self.chrome.find_element_by_tag_name("iframe")
+            self.chrome.find_element_css_selector('[class="CloseButton__ButtonElement-sc-79mh24-0 gapnof luverne-CloseButton luverne-close luverne-ClosePosition--top-right"]').click()
+        finally:
+            for dict_window_key in DICT_WINDOWS:
+                tag_name = DICT_WINDOWS[dict_window_key]
+                self.act_first(tag_name)
+                self.handle()
+                url = self.chrome.current_url
+                assert (ASRT[0] in url) or (ASRT[1] in url) or (ASRT[2] in url) or (ASRT[3] in url) or (ASRT[4] in url)
+                self.switch_to()
+
+
+
     #
     # # Проверяем кнопку поиска в хедере
     # def site_search(self):
@@ -100,108 +111,54 @@ class MainPage(BasePage):
     #     self.chrome.switch_to.window(self.handle()[0])
     #     self.switch_to()
 
-    # Проверяем Video
-    # def main_video(self):
-    #     lst = []
-    #     self.wait_of_element_located_text("Video").click()
-    #     for link in self.chrome.find_elements_by_xpath('//*[@id="app"]/header/nav/div/div[2]/ul/li[1]/div/div/ul[1]/li[2]'):
-    #         if link.is_displayed():
-    #             lst.append(link)
-    #             print(lst)
-    #             print(link.text)
-
-    # def main_video(self):
-    #     # for locator in LOC_UI_Video:
-    #     self.wait_of_element_located_text("Video").click()
-    #     block = self.wait_of_element_located('[class ="v-header-dropdown-item unlimited"]')
-    #     # block = self.chrome.find_element_by_xpath('//*[@id="app"]/header/nav/div[2]/div[2]/ul/li[1]/div')
-    #     links = block.find_elements_by_tag_name("a")
-    #     # links = self.wait_of_element_located_tag_name("a")
-    #     lst = []
-    #     for link in links:
-    #         a = link.get_attribute("href")
-    #         lst.append(a)
-    #     print(lst)
-    #     a = link.text
-    #     if a == '':
-    #         continue
-    #     if "mobile" in a:
-    #         a = a[:-7]
-    #     if "new" in a:
-    #         a = a[:-4]
-    #     # a = link.get_attribute("href")
-    #
-    #     lst.append(a)
-    # print(lst)
 
     # def main_video_experiment(self):
-    #     self.wait_of_element_located_text("Video").click()
-    #     html_list = self.wait_of_element_located('[class="v-header-dropdown-item videoSuite"]')
-    #     element = html_list.find_elements_by_tag_name("a")
-    #     time.sleep(5)
-    #     lst = []
-    #     for a in element:
-    #         self.chrome.find_elements_by_tag_name("a")
-    #     for link in element:
-    #         a = link.get_attribute('href')
-    #         if a is not None:
-    #             lst.append(a)
-    #     print(lst)
+    #     time.sleep(3)
+    #     for locator in LOC_UI:
+    #         max_w_m = 4
+    #         self.wait_of_element_click(locator).click()
+    #         time.sleep(1)
+    #         for small_position in range(1, DICT_COL_PRODUCT[locator] + 1):
+    #             if locator == "Screen Recording" and small_position == 4:
+    #                 max_w_m = 3
+    #             elif locator == "For Work" and small_position == 9:
+    #                 max_w_m = 3
+    #             elif locator == "For Education":
+    #                 max_w_m = 2
+    #             for w_m in range(1, max_w_m):
+    #                 print(DICT_POSITION[locator], small_position, w_m)
+    #                 a = self.chrome.find_element_by_css_selector(
+    #                     f'.v-main-menu-item:nth-child({DICT_POSITION[locator]}) .v-header-dropdown-item:nth-child({small_position}) .v-header-link:nth-child({w_m})')
+    #                 time.sleep(1)
+    #                 ActionChains(self.chrome) \
+    #                     .move_to_element(a) \
+    #                     .key_down(Keys.CONTROL) \
+    #                     .click(a) \
+    #                     .key_up(Keys.CONTROL) \
+    #                     .perform()
+    #                 time.sleep(1)
+    #                 self.close_last_tab()
+    #         b = self.chrome.find_elements_by_css_selector(f'.v-main-menu-item:nth-child({DICT_POSITION[locator]}) .right-side')
+    #         def get_len_element():
+    #             for f in b:
+    #                 element = f.find_elements_by_css_selector("a")
+    #                 return element
+    #         if locator == 'For Education':
+    #             continue
+    #         for f in range(1, len(get_len_element()) + 1):
+    #             s = self.chrome.find_element_by_css_selector(f'.v-main-menu-item:nth-child({DICT_POSITION[locator]}) .right-side .v-header-dropdown-item:nth-child({f}) .v-header-link.external')
+    #             time.sleep(1)
+    #             ActionChains(self.chrome) \
+    #                 .move_to_element(s) \
+    #                 .key_down(Keys.CONTROL) \
+    #                 .click(s) \
+    #                 .key_up(Keys.CONTROL) \
+    #                 .perform()
+    #             time.sleep(1)
+    #             self.close_last_tab()
 
-    def main_video_experiment(self):
-        time.sleep(3)
 
-        for locator in LOC_UI:
-            max_w_m = 4
-            self.wait_of_element_click(locator).click()
-            time.sleep(1)
 
-            # self.wait_of_element_located_text("Photo").click()
-            # time.sleep(3)
-            # self.chrome.find_element_by_css_selector('.v-main-menu-item:nth-child(1) .v-header-dropdown-item:nth-child(1) .v-header-link:nth-child(1) .small-text').click()
-
-            for small_position in range(1, DICT_COL_PRODUCT[locator] + 1):
-                if locator == "Screen Recording" and small_position == 4:
-                    max_w_m = 3
-                elif locator == "For Work" and small_position == 9:
-                    max_w_m = 3
-                elif locator == "For Education":
-                    max_w_m = 2
-                for w_m in range(1, max_w_m):
-                    print(DICT_POSITION[locator], small_position, w_m)
-                    a = self.chrome.find_element_by_css_selector(
-                        f'.v-main-menu-item:nth-child({DICT_POSITION[locator]}) .v-header-dropdown-item:nth-child({small_position}) .v-header-link:nth-child({w_m})')
-                    time.sleep(1)
-                    ActionChains(self.chrome) \
-                        .move_to_element(a) \
-                        .key_down(Keys.CONTROL) \
-                        .click(a) \
-                        .key_up(Keys.CONTROL) \
-                        .perform()
-                    time.sleep(1)
-                    self.close_last_tab()
-
-            b = self.chrome.find_elements_by_css_selector(f'.v-main-menu-item:nth-child({DICT_POSITION[locator]}) .right-side')
-            # lst = []
-            def get_len_element():
-                for f in b:
-                    element = f.find_elements_by_css_selector("a")
-                    return element
-            #     for link in element:
-            #         lst.append(link.get_attribute('href'))
-            # print(lst)
-            # print(len(element))
-            for f in range(1, len(get_len_element())):
-                s = self.chrome.find_element_by_css_selector(f'.v-main-menu-item:nth-child({DICT_POSITION[locator]}) .right-side .v-header-dropdown-item:nth-child({f}) .v-header-link.external')
-                time.sleep(1)
-                ActionChains(self.chrome) \
-                    .move_to_element(s) \
-                    .key_down(Keys.CONTROL) \
-                    .click(s) \
-                    .key_up(Keys.CONTROL) \
-                    .perform()
-                time.sleep(1)
-                self.close_last_tab()
 
 
 
