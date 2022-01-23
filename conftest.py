@@ -2,20 +2,17 @@ import pytest
 from selenium import webdriver
 
 
-@pytest.fixture(scope="session")
+@pytest.yield_fixture
 def chrome():
-    '''
-    Фикстура для настройки вебрайвера Chrome с заданными аргументами
-    '''
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--start-maximized")
-    # chrome_options.add_argument("--whitelisted-ips")
-    # chrome_options.add_argument("--disable-gpu")
-    # chrome_options.add_argument("--disable-dev-shm-usage")
-    # chrome_options.add_argument("--no-sandbox")
-    # chrome_options.add_extension('../modify_header/ModHeader_2.3.9_0.crx')
-    # chrome = webdriver.Remote('http://selenium-chrome:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME, options=chrome_options)
-    # для локального запуска оставляю эту строчку:
+    chrome_options.add_experimental_option("prefs", {
+        "download.default_directory": r"D:\Main_test_one_file\test_main\First\download_files",
+        "safebrowsing.enabled": "false",
+        # "download.prompt_for_download": False,
+        "download.directory_upgrade": True
+        # "safebrowsing.enabled": True
+    })
     chrome = webdriver.Chrome(options=chrome_options)
     yield chrome
     chrome.quit()

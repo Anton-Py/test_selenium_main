@@ -42,109 +42,157 @@ class Locators:
     # список разделов из выпадающего списка
     LOC_UI = ['Video', 'Screen Recording', 'Photo', 'For Work', 'For Education']
     DICT_POSITION = {'Video': 1, 'Screen Recording': 2, 'Photo': 3, 'For Work': 4, 'For Education': 5}
-    # DICT_COL_PRODUCT = {'Video': 7, 'Screen Recording': 4, 'Photo': 5, 'For Work': 9, 'For Education': 2}
-    DICT_COL_PRODUCT = {'Video': 7, 'Screen Recording': 4, 'Photo': 5, 'For Work': 9, 'For Education': 2}
+    DICT_COL_PRODUCT = {'Video': 7, 'Screen Recording': 4, 'Photo': 4, 'For Work': 9, 'For Education': 2}
+    COLL_IN_PRODUCT_BLOCK = {'Video': 4, 'Screen Recording': 3, 'Photo': 4, 'For Work': 4, 'For Education': 2}
 
-    # LOC_UI = ['Photo', 'For Work']
-    # LOC_UI = ['For Work']
-    LOC_UI_Video = ['Video']
-    # LOC_UI = ['Photo']
-    # LOC_UI = ['For Work']
-    LOC_UI_For_Education = ['For Education']
+    # ссылка на странице для assert
+    MAIN_LINK_IN_PAGE_OLL = 'link[hreflang="x-default"][href]'
+    MAIN_LINK_IN_PAGE_SR_AND_EDUCATION = 'link[rel="canonical"][href]'
 
-    DICT_VIDEO = {'Unlimited': 'Unlimited',
-                  'Video_Suite': 'Video Suite',
-                  'Video_Editor_Plus': 'Video Editor Plus',
-                  'Slideshow_Maker': 'Slideshow Maker',
-                  'Video_Suite_Business': 'Video Suite Business',
-                  'Video_Converter': 'Video Converter',
-                  'Clips': 'Clips',
-                  'Effects_Store': 'Effects Store',
-                  'Stock_Video': 'Stock Video',
-                  'Stock_Audio': 'Stock Audio',
-                  'Stock_Photos': 'Stock Photos'}
+    # список ссылок для проверки в assert для меню
+    LIST_VIDEO_HTTPS = [["https://www.movavi.com/android-video-editor",
+                         "https://www.movavi.com/android-video-editor",
+                         "https://www.movavi.com/ios-video-editor"],
 
-    DICT_SCREEN_RECORDING = {'Unlimited': 'Unlimited',
-                             'Video_Suite': 'Video Suite',
-                             'Screen_Recorder': 'Screen Recorder',
-                             'Gecata_by_Movavi': 'Gecata by Movavi',
-                             'Effects_Store': 'Effects Store',
-                             'Stock_Video': 'Stock Video',
-                             'Stock_Audio': 'Stock Audio',
-                             'Stock_Photos': 'Stock Photos'}
+                        ["https://www.movavi.com/suite-unlimited",
+                         "https://www.movavi.com/suite-unlimited",
+                         "https://www.movavi.com/suite-unlimited-mac"],
 
-    DICT_PHOTO = {'Unlimited': 'Unlimited',
-                  'Picverse': 'Picverse',
-                  # 'Mobile': 'mobile ',
-                  'Photo_Manager': 'Photo Manager',
-                  'Slideshow_Maker': 'Slideshow Maker',
-                  'Effects_Store': 'Effects Store',
-                  'Stock_Audio': 'Stock Audio',
-                  'Stock_Photos': 'Stock Photos'}
+                        ["https://www.movavi.com/video-suite",
+                         "https://www.movavi.com/video-suite",
+                         "https://www.movavi.com/suite-mac"],
 
-    DICT_FOR_WORK = {'Unlimited': 'Unlimited',
-                     'Video_Suite_Business': 'Video Suite Business',
-                     'Video_Editor_Plus': 'Video Editor Plus',
-                     'Screen_Recorder': 'Screen Recorder',
-                     'Video_Converter': 'Video Converter',
-                     'Picverse': 'Picverse',
-                     'PDFСhef_by_Movavi': 'PDFСhef by Movavi',
-                     'Slideshow_Maker': 'Slideshow Maker',
-                     'PDFChef_Scanner': 'PDFChef Scanner',
-                     'Effects_Store': 'Effects Store'}
+                        ["https://www.movavi.com/videoeditor",
+                         "https://www.movavi.com/videoeditor",
+                         "https://www.movavi.com/video-editor-plus-mac"],
 
-    DICT_FOR_EDUCATION = {'Students_and_Teachers': 'Students and Teachers',
-                          'Schools_and_Universities': 'Schools and Universities'}
+                        ["https://www.movavi.com/slideshow-maker",
+                         "https://www.movavi.com/slideshow-maker",
+                         "https://www.movavi.com/slideshow-maker-for-mac"],
 
-    DICT_HREF = {'Unlimited': 'https://www.movavi.com/suite-unlimited',
-                 'Video_Suite': 'https://www.movavi.com/video-suite-new',
-                 'Video_Editor_Plus': 'https://www.movavi.com/videoeditor',
-                 'Slideshow_Maker': 'https://www.movavi.com/slideshow-maker',
-                 'Video_Suite_Business': 'https://www.movavi.com/business-suite.html',
-                 'Video_Converter': 'https://www.movavi.com/movavi-video-converter',
-                 'Clips': 'https://www.movavi.com/android-video-editor',
-                 'Effects_Store': 'https://effects-store.movavi.com',
-                 'Stock_Video': 'https://www.movavi.com/stock-video-footage',
-                 'Stock_Audio': 'https://www.movavi.com/stock-music',
-                 'Stock_Photos': 'https://www.movavi.com/stock-photos',
-                 'Screen_Recorder': 'https://www.movavi.com/screen-recorder',
-                 'Gecata_by_Movavi': 'https://www.gecata.com/',
-                 'Picverse': 'https://www.movavi.com/photo-editor',
-                 # 'Mobile': 'https://www.movavi.com/mobile-photo-editor.html',
-                 'Photo_Manager': 'https://www.movavi.com/photo-organizer',
-                 'PDFСhef_by_Movavi': 'https://pdfchef.com/pdf-editor',
-                 'PDFChef_Scanner': 'https://pdfchef.com/pdfchef-scanner.html',
-                 'Students_and_Teachers': 'https://www.edu.movavi.com/',
-                 'Schools_and_Universities': 'https://www.edu.movavi.com/academic-for-schools'}
+                        ["https://www.movavi.com/business-suite.html",
+                         "https://www.movavi.com/business-suite.html",
+                         "https://www.movavi.com/business-suite-mac.html"],
 
-    OSI = ["Windows", "MacOS"]
+                        ["https://www.movavi.com/movavi-video-converter",
+                         "https://www.movavi.com/movavi-video-converter",
+                         "https://www.movavi.com/videoconvertermac"],
 
-    OSI_UNLIMITED = ['[href="/suite-unlimited/?asrc=main_menu#main"]',
-                     '[href="/suite-unlimited-mac/?asrc=main_menu#main"]']
-    OSI_VIDEO_SUITE = ['[href="/video-suite-new/?asrc=main_menu#main"]', '[href="/suite-mac/?asrc=main_menu#main"]']
-    OSI_VIDEOEDITOR = ['[href="/videoeditor/?asrc=main_menu"]', 'href="/video-editor-plus-mac/?asrc=main_menu"']
-    OSI_SLIDESHOW_MARKER = ['[href="/slideshow-maker/?asrc=main_menu"]',
-                            '[href="/slideshow-maker-for-mac/?asrc=main_menu"]']
-    OSI_BUSINES_SUITE = ['[href="/business-suite.html?asrc=main_menu"]',
-                         '[href="/business-suite-mac.html?asrc=main_menu"]']
-    OSI_VIDEO_CONVERTER = ['[href="/movavi-video-converter/?asrc=main_menu"]',
-                           '[href="/videoconvertermac/?asrc=main_menu"]']
-    OSI_VIDEO_EDITOR = ['[href="/android-video-editor/?asrc=main_menu"]', '[href="/ios-video-editor/?asrc=main_menu"]']
+                        ["https://effects-store.movavi.com",
+                         "https://www.movavi.com/stock-video-footage",
+                         "https://www.movavi.com/stock-music",
+                         "https://www.movavi.com/stock-photos"]
+                        ]
 
-    loc = ['class="list left-side"']
+    lIST_SCREEN_RECORDING_HTTPS = [["https://www.movavi.com/suite-unlimited",
+                                    "https://www.movavi.com/suite-unlimited",
+                                    "https://www.movavi.com/suite-unlimited-mac"],
 
-    element_located = ['[class ="v-header-dropdown-item unlimited"]',
-                       '[class="v-header-dropdown-item videoSuite"]',
-                       '[class ="v-header-dropdown-item videoEditorPlus"]'
-                       # '[class="v-header-dropdown-item slideshowMaker"]',
-                       # '[class="v-header-dropdown-item videoSuiteBusiness"]',
-                       # '[class="v-header-dropdown-item videoConverter"]',
-                       # '[class="v-header-dropdown-item clips"]',
-                       # '[class="v-header-dropdown-item effectsStore"]',
-                       # '[class="v-header-dropdown-item stockVideo only-desktop"]',
-                       # '[class="v-header-dropdown-item stockAudio only-desktop"]',
-                       # '[class="v-header-dropdown-item stockPhotos only-desktop"]'
-                       ]
+                                   ["https://www.movavi.com/video-suite",
+                                    "https://www.movavi.com/video-suite",
+                                    "https://www.movavi.com/suite-mac"],
+
+                                   ["https://www.movavi.com/screen-recorder",
+                                    "https://www.movavi.com/screen-recorder",
+                                    "https://www.movavi.com/movavi-screen-recorder-mac"],
+
+                                   ["https://www.gecata.com",
+                                    "https://www.gecata.com"],
+
+                                   ["https://effects-store.movavi.com",
+                                    "https://www.movavi.com/stock-video-footage",
+                                    "https://www.movavi.com/stock-music",
+                                    "https://www.movavi.com/stock-photos"]]
+
+    lIST_PHOTO_HTTPS = [["https://www.movavi.com/suite-unlimited",
+                         "https://www.movavi.com/suite-unlimited",
+                         "https://www.movavi.com/suite-unlimited-mac"],
+
+                        ["https://www.movavi.com/photo-editor",
+                         "https://www.movavi.com/photo-editor",
+                         "https://www.movavi.com/mac-photo-editor"],
+
+                        ["https://www.movavi.com/mobile-photo-editor.html",
+                         "https://www.movavi.com/mobile-photo-editor.html",
+                         "https://www.movavi.com/mobile-photo-editor.html"],
+
+                        ["https://www.movavi.com/slideshow-maker",
+                         "https://www.movavi.com/slideshow-maker",
+                         "https://www.movavi.com/slideshow-maker-for-mac"],
+
+                        ["https://effects-store.movavi.com/",
+                         "https://www.movavi.com/stock-music",
+                         "https://www.movavi.com/stock-photos"]]
+
+    lIST_FOR_WORK_HTTPS = [["https://www.movavi.com/suite-unlimited",
+                            "https://www.movavi.com/suite-unlimited",
+                            "https://www.movavi.com/suite-unlimited-mac"],
+
+                           ["https://www.movavi.com/business-suite.html",
+                            "https://www.movavi.com/business-suite.html",
+                            "https://www.movavi.com/business-suite-mac.html"],
+
+                           ["https://www.movavi.com/videoeditor",
+                            "https://www.movavi.com/videoeditor",
+                            "https://www.movavi.com/video-editor-plus-mac"],
+
+                           ["https://www.movavi.com/screen-recorder-for-business.html",
+                            "https://www.movavi.com/screen-recorder-for-business.html",
+                            "https://www.movavi.com/screen-recorder-mac-for-business.html"],
+
+                           ["https://www.movavi.com/videoconverter",
+                            "https://www.movavi.com/videoconverter/",
+                            "https://www.movavi.com/videoconvertermac"],
+
+                           ["https://www.movavi.com/photo-editor",
+                            "https://www.movavi.com/photo-editor",
+                            "https://www.movavi.com/mac-photo-editor"],
+
+                           ["https://pdfchef.com/pdf-editor",
+                            "https://pdfchef.com/pdf-editor",
+                            "https://pdfchef.com/pdf-editor-mac"],
+
+                           ["https://www.movavi.com/slideshow-maker",
+                            "https://www.movavi.com/slideshow-maker",
+                            "https://www.movavi.com/slideshow-maker-for-mac"],
+
+                           ["https://pdfchef.com/pdfchef-scanner.html",
+                            "https://pdfchef.com/pdfchef-scanner.html"],
+
+                           ["https://effects-store.movavi.com/"]]
+
+    lIST_FOR_EDUCATION_HTTPS = [["https://www.edu.movavi.com",
+                                 "https://www.edu.movavi.com/academic-for-schools"]]
+    # данные для перебор продуктов в круглишках 4 шт. Для нажатия на learn more и скачивания
+    LEARN_MORE_DICT = {1: '[alt = "Edit videos"]',
+                       2: '[alt="Capture<br/>screens"]',
+                       3: '[alt="Convert media"]',
+                       4: '[alt="Edit photos"]'}
+    # вопрос почему так работает, выдает как список если перебирать lst_pages и pages
+    lst_pages = ('[alt = "Edit videos"]', '[alt="Capture<br/>screens"]', '[alt="Convert media"]', '[alt="Edit photos"]')
+    pages = ["Edit videos", "Capture", "Convert media", "Edit photos"]
+
+    LEARN_MORE_DICT_CSS_SELECTOR = {1: '.carousel-slide:nth-child(2) .desc-links > .btn > .link-title',
+                                    2: '.carousel-slide:nth-child(3) .desc-links > .btn > .link-title',
+                                    3: '.carousel-slide:nth-child(4) .desc-links > .btn > .link-title',
+                                    4: '.carousel-slide:nth-child(5) .desc-links > .btn > .link-title'}
+
+    LEARN_MORE_DICT_URL = {1: 'https://www.movavi.com/video-editor-plus',
+                           2: 'https://www.movavi.com/screen-recorder',
+                           3: 'https://www.movavi.com/videoconverter',
+                           4: 'https://www.movavi.com/photo-editor'}
+
+    DOWNLOAD_LINKS = {1: '.carousel-slide:nth-child(2) > .row .btn:nth-child(2) > .link-title',
+                      2: '.carousel-slide:nth-child(3) .btn:nth-child(2)',
+                      3: '.carousel-slide:nth-child(4) .btn:nth-child(2) > .link-title',
+                      4: '.carousel-slide:nth-child(5) > .row .btn:nth-child(2) > .link-title'}
+
+    NAME_DOWNLOAD_FILES = {1: 'MovaviVideoEditorPlusSetupC.exe',
+                           2: 'MovaviScreenRecorderSetupC.exe',
+                           3: 'MovaviVideoConverterSetupC.exe',
+                           4: 'MovaviPicverseSetupC.exe'}
+
+
 
 # block = self.wait_of_element_located('[class="v-header-dropdown full-width dropdown-row v-main-menu-dropdown"]')
 # block = self.chrome.find_element_by_xpath('//*[@id="app"]/header/nav/div[2]/div[2]/ul/li[1]/div/div/ul[1]')
@@ -159,19 +207,6 @@ class Locators:
 # block = self.wait_of_element_located('[class="v-header-dropdown-item stockVideo only-desktop"]')
 # block = self.wait_of_element_located('[class="v-header-dropdown-item stockAudio only-desktop"]')
 # block = self.wait_of_element_located('[class="v-header-dropdown-item stockPhotos only-desktop"]')
-
-
-# DICT_VIDEO = {'Unlimited': ['Unlimited', '[href="/suite-unlimited/?asrc=main_menu#main"]', '[href="/suite-unlimited-mac/?asrc=main_menu#main"]'],
-#               'Video_Suite': 'Video Suite',
-#               'Video_Editor_Plus': 'Video Editor Plus',
-#               'Slideshow_Maker': 'Slideshow Maker',
-#               'Video_Suite_Business': 'Video Suite Business',
-#               'Video_Converter': 'Video Converter',
-#               'Clips': 'Clips',
-#               'Effects_Store': 'Effects Store',
-#               'Stock_Video': 'Stock Video',
-#               'Stock_Audio': 'Stock Audio',
-#               'Stock_Photos': 'Stock Photos'}
 
 
 # # Сообщения ошибок

@@ -3,3 +3,4 @@ requests==2.27.0
 pytest~=6.2.5
 lib~=4.0.0
 selenium~=4.1.0
+PyAutoGUI~=0.9.53
