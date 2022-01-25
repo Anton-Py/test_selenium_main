@@ -38,7 +38,7 @@ def test_all_links_dropdown_menu(chrome):
                 block_with_products_from_the_left = page.chrome.find_element_by_css_selector(
                     f'.v-main-menu-item:nth-child({Locators.DICT_POSITION[locator]}) .v-header-dropdown-item:nth-child({product_and_win_mac}) .v-header-link:nth-child({win_or_mac})')
                 time.sleep(2)
-                page.action(block_with_products_from_the_left)
+                page.tap_element(block_with_products_from_the_left)
                 if len(page.chrome.window_handles) == 2:
                     page.chrome.switch_to.window(window_name=page.chrome.window_handles[1])
                     time.sleep(3)
@@ -111,7 +111,7 @@ def test_all_links_dropdown_menu(chrome):
             s = page.chrome.find_element_by_css_selector(
                 f'.v-main-menu-item:nth-child({Locators.DICT_POSITION[locator]}) .right-side .v-header-dropdown-item:nth-child({f}) .v-header-link.external')
             time.sleep(1)
-            page.action(s)
+            page.tap_element(s)
             # ActionChains(self.chrome) \
             #     .move_to_element(s) \
             #     .key_down(Keys.CONTROL) \

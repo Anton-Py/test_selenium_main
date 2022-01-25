@@ -51,13 +51,13 @@ class MainPage(BasePage):
             .key_up(Keys.CONTROL) \
             .perform()
 
-    def handle(self):
+    def switch_to_second_tab(self):
         default_handle = self.chrome.window_handles
         self.chrome.switch_to.window(default_handle[1])
         return default_handle
 
     def switch_to(self):
-        self.chrome.switch_to.window(self.handle()[0])
+        self.chrome.switch_to.window(self.switch_to_second_tab()[0])
         default_handle = self.chrome.current_window_handle
         handles = list(self.chrome.window_handles)
         assert len(handles) > 1

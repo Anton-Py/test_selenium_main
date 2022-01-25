@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from lib.constants import Locators
-
+import os.path
 import time
 
 
@@ -27,9 +27,14 @@ class BasePage:
             EC.visibility_of_element_located((By.PARTIAL_LINK_TEXT, css_selector)),
             message=f"Can't find element by locator {css_selector}")
 
+    def wait_of_elements_located_css_selector(self, css_selector, time=10):
+        return WebDriverWait(self.chrome, time).until(
+            EC.visibility_of_any_elements_located((By.CSS_SELECTOR, css_selector)),
+            message=f"Can't find element by locator {css_selector}")
+
     def wait_of_element_located_tag_name(self, css_selector, time=10):
         return WebDriverWait(self.chrome, time).until(
-            EC.visibility_of_any_elements_located((By.TAG_NAME, css_selector)),
+            EC.visibility_of_element_located((By.TAG_NAME, css_selector)),
             message=f"Can't find element by locator {css_selector}")
 
     def wait_of_element_click(self, css_selector, time=10):
@@ -50,13 +55,13 @@ class BasePage:
     def go_to_site(self):
         return self.chrome.get(self.base_url)
 
-    def handle(self):
+    def switch_to_second_tab(self):
         default_handle = self.chrome.window_handles
         self.chrome.switch_to.window(default_handle[1])
         return default_handle
 
     def switch_to(self):
-        self.chrome.switch_to.window(self.handle()[0])
+        self.chrome.switch_to.window(self.switch_to_second_tab()[0])
         default_handle = self.chrome.current_window_handle
         handles = list(self.chrome.window_handles)
         assert len(handles) > 1
@@ -72,3 +77,14 @@ class BasePage:
             time.sleep(2)
             self.chrome.close()
             self.chrome.switch_to.window(window_name=self.chrome.window_handles[0])
+
+    def check_downloaded_files(self, element):
+        while not os.path.exists('D:\\Main_test_one_file\\test_main\\First\\download_files\\'):
+            time.sleep(2)
+        # check file
+            if os.path.isfile(f'D:\\Main_test_one_file\\test_main\\First\\download_files\\{element}'):
+                print(f"File download: {element} is completed")
+            else:
+                print(f"File download: {element} is not completed")
+            time.sleep(3)
+            os.remove(f'D:\\Main_test_one_file\\test_main\\First\\download_files\\{element}')

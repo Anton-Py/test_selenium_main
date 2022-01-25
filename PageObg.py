@@ -50,13 +50,13 @@ class MainPage(BasePage):
             .key_up(Keys.CONTROL) \
             .perform()
 
-    def handle(self):
+    def switch_to_second_tab(self):
         default_handle = self.chrome.window_handles
         self.chrome.switch_to.window(default_handle[1])
         return default_handle
 
     def switch_to(self):
-        self.chrome.switch_to.window(self.handle()[0])
+        self.chrome.switch_to.window(self.switch_to_second_tab()[0])
         default_handle = self.chrome.current_window_handle
         handles = list(self.chrome.window_handles)
         assert len(handles) > 1
@@ -73,7 +73,7 @@ class MainPage(BasePage):
         for dict_window_key in DICT_WINDOWS:
             tag_name = DICT_WINDOWS[dict_window_key]
             self.act_first(tag_name)
-            self.handle()
+            self.switch_to_second_tab()
             url = self.chrome.current_url
             assert (ASRT[0] in url) or (ASRT[1] in url) or (ASRT[2] in url) or (ASRT[3] in url) or (ASRT[4] in url)
             self.switch_to()
@@ -83,11 +83,11 @@ class MainPage(BasePage):
         self.wait_of_element_located(MovaviLocators.LOCATOR_HAD_SEARCH).click()
         self.wait_of_element_located(MovaviLocators.LOCATOR_ENTR_FIRLD).send_keys(TEXT_SEARCH)
         self.act_second()
-        self.handle()
+        self.switch_to_second_tab()
         time.sleep(2)
         body_text = self.chrome.find_element_by_tag_name('body').text
         assert PAGE_SORCE_ONE in body_text, "страница не соответствует запросу"
-        self.chrome.switch_to.window(self.handle()[0])
+        self.chrome.switch_to.window(self.switch_to_second_tab()[0])
         self.switch_to()
 
     # Проверяем все ui
@@ -108,7 +108,7 @@ class MainPage(BasePage):
             for dikt_key in dict_page:
                 tag_name = dict_page[dikt_key]
                 self.act_ui(tag_name)
-                self.handle()
+                self.switch_to_second_tab()
                 time.sleep(3)
                 if locator == 'For Work':
                     DICT_HREF["Video_Converter"] = "https://www.movavi.com/videoconverter"

@@ -9,7 +9,7 @@ class Locators:
 
     # проверка по селектору и что текст соответствует
     MAIN_TEXT = "span.title"
-    TITLE_TXT = "Work with multimedia anywhere"
+    TITLE_TEXT = "Work with multimedia anywhere"
 
     # поиск баннера
     BANNER_CONTENT = '[class="banner-title d-none d-xl-block"]'
@@ -23,24 +23,24 @@ class Locators:
                     'support': '[href="/support/?asrc=main_menu"]',
                     'how-to': '[href="/support/how-to/?asrc=main_menu"]',
                     'blog': '[href="https://movavi.io/?asrc=main_menu"]',
-                    'v-header-account': '[href="https://movavi.id/?lng=en&asrc=main_menu"]'}
+                    'My Account': '[href="https://movavi.id/?lng=en&asrc=main_menu"]'}
 
     # список для проверки ссылки после клика в хедере, что перешли на нужный URL
-    ASRT = ['https://www.movavi.com/store/?asrc=main_menu',
-            'https://www.movavi.com/support/?asrc=main_menu',
-            'https://www.movavi.com/support/how-to/?asrc=main_menu',
-            'https://www.movavi.io/?asrc=main_menu',
-            'https://movavi.id/login?lng=en&asrc=main_menu']
+    HEADER_TOP_SIDEBAR_LINKS = {'store': 'https://www.movavi.com/store/?asrc=main_menu',
+                                'support': 'https://www.movavi.com/support/?asrc=main_menu',
+                                'how-to': 'https://www.movavi.com/support/how-to/?asrc=main_menu',
+                                'blog': 'https://www.movavi.io/?asrc=main_menu',
+                                'My Account': 'https://movavi.id/login?lng=en&asrc=main_menu'}
 
     # список локаторов для поиска (открыть, ввести текст)
     HEADER_SEARCH = '[class="v-header-search"]'
     ENTRY_FIELD = 'div label input[placeholder="Search on movavi.com"]'
     TEXT_SEARCH = "screen recorder"
     SEARCH = '[class="v-header-link external"]'
-    PAGE_SORCE_ONE = "Screen Recorder for Perfect Captures - Movavi"
+    SEARCH_RESULT_TEXT = "Screen Recorder for Perfect Captures - Movavi"
 
     # список разделов из выпадающего списка
-    LOC_UI = ['Video', 'Screen Recording', 'Photo', 'For Work', 'For Education']
+    LOC_UI = ('Video', 'Screen Recording', 'Photo', 'For Work', 'For Education')
     DICT_POSITION = {'Video': 1, 'Screen Recording': 2, 'Photo': 3, 'For Work': 4, 'For Education': 5}
     DICT_COL_PRODUCT = {'Video': 7, 'Screen Recording': 4, 'Photo': 4, 'For Work': 9, 'For Education': 2}
     COLL_IN_PRODUCT_BLOCK = {'Video': 4, 'Screen Recording': 3, 'Photo': 4, 'For Work': 4, 'For Education': 2}
@@ -179,7 +179,7 @@ class Locators:
 
     LEARN_MORE_DICT_URL = {1: 'https://www.movavi.com/video-editor-plus',
                            2: 'https://www.movavi.com/screen-recorder',
-                           3: 'https://www.movavi.com/videoconverter',
+                           3: 'https://www.movavi.com/movavi-video-converter',
                            4: 'https://www.movavi.com/photo-editor'}
 
     DOWNLOAD_LINKS = {1: '.carousel-slide:nth-child(2) > .row .btn:nth-child(2) > .link-title',
@@ -191,8 +191,6 @@ class Locators:
                            2: 'MovaviScreenRecorderSetupC.exe',
                            3: 'MovaviVideoConverterSetupC.exe',
                            4: 'MovaviPicverseSetupC.exe'}
-
-
 
 # block = self.wait_of_element_located('[class="v-header-dropdown full-width dropdown-row v-main-menu-dropdown"]')
 # block = self.chrome.find_element_by_xpath('//*[@id="app"]/header/nav/div[2]/div[2]/ul/li[1]/div/div/ul[1]')

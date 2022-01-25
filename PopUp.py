@@ -52,13 +52,13 @@ class MainPage(BasePage):
             .key_up(Keys.CONTROL) \
             .perform()
 
-    def handle(self):
+    def switch_to_second_tab(self):
         default_handle = self.chrome.window_handles
         self.chrome.switch_to.window(default_handle[1])
         return default_handle
 
     def switch_to(self):
-        self.chrome.switch_to.window(self.handle()[0])
+        self.chrome.switch_to.window(self.switch_to_second_tab()[0])
         default_handle = self.chrome.current_window_handle
         handles = list(self.chrome.window_handles)
         assert len(handles) > 1
@@ -89,7 +89,7 @@ class MainPage(BasePage):
             for dict_window_key in DICT_WINDOWS:
                 tag_name = DICT_WINDOWS[dict_window_key]
                 self.act_first(tag_name)
-                self.handle()
+                self.switch_to_second_tab()
                 url = self.chrome.current_url
                 assert (ASRT[0] in url) or (ASRT[1] in url) or (ASRT[2] in url) or (ASRT[3] in url) or (ASRT[4] in url)
                 self.switch_to()

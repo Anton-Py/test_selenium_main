@@ -1,6 +1,3 @@
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from lib.core import BasePage
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.common.by import By
@@ -23,25 +20,16 @@ def test_scroll_main_page(chrome):
         page.wait_of_element_located(Locators.LEARN_MORE_DICT[key]).click()
         time.sleep(2)
         pyautogui.click()
-        button = page.chrome.find_element(By.CSS_SELECTOR, Locators.LEARN_MORE_DICT_CSS_SELECTOR[key])
-        page.action(button)
-        page.handle()
+        button = page.wait_of_element_located(Locators.LEARN_MORE_DICT_CSS_SELECTOR[key])
+        page.tap_element(button)
+        page.switch_to_second_tab()
         url = page.chrome.current_url
         assert Locators.LEARN_MORE_DICT_URL[key] in url
         page.close_last_tab()
-
-        chrome.find_element(By.CSS_SELECTOR, Locators.DOWNLOAD_LINKS[key]).click()
+        page.wait_of_element_located(Locators.DOWNLOAD_LINKS[key]).click()
         time.sleep(55)
         # check if file downloaded file path exists
-        while not os.path.exists('D:\\Main_test_one_file\\test_main\\First\\download_files\\'):
-            time.sleep(2)
-        # check file
-        if os.path.isfile(f'D:\\Main_test_one_file\\test_main\\First\\download_files\\{Locators.NAME_DOWNLOAD_FILES[key]}'):
-            print(f"File download: {Locators.NAME_DOWNLOAD_FILES[key]} is completed")
-        else:
-            print(f"File download: {Locators.NAME_DOWNLOAD_FILES[key]} is not completed")
-        time.sleep(3)
-        os.remove(f'D:\\Main_test_one_file\\test_main\\First\\download_files\\{Locators.NAME_DOWNLOAD_FILES[key]}')
+        page.check_downloaded_files(Locators.NAME_DOWNLOAD_FILES[key])
 
 # pytest tests/test_s_scroll.py --disable-warnings --tb=short -s
 # pytest tests --disable-warnings --tb=short -s

@@ -1,8 +1,3 @@
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from lib.core import BasePage
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.common.by import By
 from lib.constants import Locators
 from lib.page import MainPage
@@ -11,6 +6,9 @@ import time
 
 
 def links(page, locator, list_for_assert):
+    # print(pyautogui.position())
+    # pyautogui.moveTo(100, 200, 2)
+    # pyautogui.click(x=100, y=200)
     page.wait_of_element_click(locator).click()
     coll_in_product_block = Locators.COLL_IN_PRODUCT_BLOCK[locator]
     for product_and_win_mac in range(1, Locators.DICT_COL_PRODUCT[locator] + 1):
@@ -21,22 +19,26 @@ def links(page, locator, list_for_assert):
         elif locator == Locators.LOC_UI[4]:
             coll_in_product_block = 2
         for win_or_mac in range(1, coll_in_product_block):
+            pyautogui.click(x=100, y=200)
             print(locator)
             print(Locators.DICT_POSITION[locator], product_and_win_mac, win_or_mac)
             # перебор левой части продуктов
-            element_left = page.block_with_products_from_the_left(locator, product_and_win_mac, win_or_mac)
+            element_left = page.get_element_products(locator, product_and_win_mac, win_or_mac)
             time.sleep(0.5)
-            page.action(element_left)
-            page.actions_left(product_and_win_mac, list_for_assert, win_or_mac, locator)
+            page.tap_element(element_left)
+            page.actions_products(product_and_win_mac, list_for_assert, win_or_mac, locator)
+
     # перебор правой части продуктов
-    element_rite = page.block_with_products_from_the_right(locator)
+    elements_rite = page.get_element_stocks(locator)
     elements = ''
-    for f in element_rite:
-        elements = f.find_elements(By.CSS_SELECTOR, "a")
-    for i in range(1, len(elements) + 1):
-        child = page.num_child_for_right_block(locator, i)
-        page.action(child)
-        page.actions_right(list_for_assert, i)
+
+    for element in elements_rite:
+        elements = element.find_elements(By.CSS_SELECTOR, "a")
+
+    for stock in range(1, len(elements) + 1):
+        child = page.get_stock_child(locator, stock)
+        page.tap_element(child)
+        page.actions_stock(list_for_assert, stock)
 
 
 def test_all_links_dropdown_menu(chrome):

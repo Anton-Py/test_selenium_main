@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from lib.page import MainPage
 from lib.constants import Locators
 import time
@@ -9,11 +8,11 @@ def test_site_search(chrome):
     page.go_to_site()
     page.wait_of_element_located(Locators.HEADER_SEARCH).click()
     page.wait_of_element_located(Locators.ENTRY_FIELD).send_keys(Locators.TEXT_SEARCH)
-    page.act_first(Locators.SEARCH)
-    page.handle()
+    page.tap_tag(Locators.SEARCH)
+    page.switch_to_second_tab()
     time.sleep(2)
-    body_text = page.chrome.find_element(By.TAG_NAME, 'body').text
-    assert Locators.PAGE_SORCE_ONE in body_text, "страница не соответствует запросу"
+    main_body_text = page.wait_of_element_located_tag_name('body').text
+    assert Locators.SEARCH_RESULT_TEXT in main_body_text, "страница не соответствует запросу"
     page.close_last_tab()
 
 # pytest tests/test_a_menu_site_search.py --tb=short -s
