@@ -164,33 +164,64 @@ class Locators:
     lIST_FOR_EDUCATION_HTTPS = [["https://www.edu.movavi.com",
                                  "https://www.edu.movavi.com/academic-for-schools"]]
     # данные для перебор продуктов в круглишках 4 шт. Для нажатия на learn more и скачивания
-    LEARN_MORE_DICT = {1: '[alt = "Edit videos"]',
-                       2: '[alt="Capture<br/>screens"]',
-                       3: '[alt="Convert media"]',
-                       4: '[alt="Edit photos"]'}
+    NUMBER_OF_ROUNDS = 4
+
+    LEARN_MORE_DICT = {0: '[alt = "Edit videos"]',
+                       1: '[alt="Capture<br/>screens"]',
+                       2: '[alt="Convert media"]',
+                       3: '[alt="Edit photos"]'}
     # вопрос почему так работает, выдает как список если перебирать lst_pages и pages
     lst_pages = ('[alt = "Edit videos"]', '[alt="Capture<br/>screens"]', '[alt="Convert media"]', '[alt="Edit photos"]')
     pages = ["Edit videos", "Capture", "Convert media", "Edit photos"]
 
-    LEARN_MORE_DICT_CSS_SELECTOR = {1: '.carousel-slide:nth-child(2) .desc-links > .btn > .link-title',
-                                    2: '.carousel-slide:nth-child(3) .desc-links > .btn > .link-title',
-                                    3: '.carousel-slide:nth-child(4) .desc-links > .btn > .link-title',
-                                    4: '.carousel-slide:nth-child(5) .desc-links > .btn > .link-title'}
+    LEARN_MORE_DICT_CSS_SELECTOR = {0: '.carousel-slide:nth-child(2) .desc-links > .btn > .link-title',
+                                    1: '.carousel-slide:nth-child(3) .desc-links > .btn > .link-title',
+                                    2: '.carousel-slide:nth-child(4) .desc-links > .btn > .link-title',
+                                    3: '.carousel-slide:nth-child(5) .desc-links > .btn > .link-title'}
 
-    LEARN_MORE_DICT_URL = {1: 'https://www.movavi.com/video-editor-plus',
-                           2: 'https://www.movavi.com/screen-recorder',
-                           3: 'https://www.movavi.com/movavi-video-converter',
-                           4: 'https://www.movavi.com/photo-editor'}
+    LEARN_MORE_DICT_URL = {0: 'https://www.movavi.com/video-editor-plus',
+                           1: 'https://www.movavi.com/screen-recorder',
+                           2: 'https://www.movavi.com/movavi-video-converter',
+                           3: 'https://www.movavi.com/photo-editor'}
 
-    DOWNLOAD_LINKS = {1: '.carousel-slide:nth-child(2) > .row .btn:nth-child(2) > .link-title',
-                      2: '.carousel-slide:nth-child(3) .btn:nth-child(2)',
-                      3: '.carousel-slide:nth-child(4) .btn:nth-child(2) > .link-title',
-                      4: '.carousel-slide:nth-child(5) > .row .btn:nth-child(2) > .link-title'}
+    DOWNLOAD_LINKS = {0: '.carousel-slide:nth-child(2) > .row .btn:nth-child(2) > .link-title',
+                      1: '.carousel-slide:nth-child(3) .btn:nth-child(2)',
+                      2: '.carousel-slide:nth-child(4) .btn:nth-child(2) > .link-title',
+                      3: '.carousel-slide:nth-child(5) > .row .btn:nth-child(2) > .link-title'}
 
-    NAME_DOWNLOAD_FILES = {1: 'MovaviVideoEditorPlusSetupC.exe',
-                           2: 'MovaviScreenRecorderSetupC.exe',
-                           3: 'MovaviVideoConverterSetupC.exe',
-                           4: 'MovaviPicverseSetupC.exe'}
+    NAME_DOWNLOAD_FILES = {0: 'MovaviVideoEditorPlusSetupC.exe',
+                           1: 'MovaviScreenRecorderSetupC.exe',
+                           2: 'MovaviVideoConverterSetupC.exe',
+                           3: 'MovaviPicverseSetupC.exe'}
+
+    LOOKING_FOR_URLS = {0: "https://www.movavi.com/store",
+                        1: "https://www.movavi.com/store/mac",
+                        2: "https://www.movavi.com/support/"}
+
+    LOOKING_FOR_SELECTORS = {0: "div:nth-child(1) > a.btn.btn-support.outline-primary",
+                             1: ".support-link > span",
+                             2: "div:nth-child(2) > a.btn.btn-support.outline-primary"}
+
+    # данные для проверки блока баннер на главной странице
+    BANNERS = {1: "https://www.movavi.com/video-suite-new",
+               2: "https://www.movavi.com/suite-unlimited",
+               3: "https://effects-store.movavi.com",
+               4: "https://www.movavi.com/photo-editor",
+               5: "https://www.movavi.com/video-editor-plus",
+               6: "https://www.movavi.com/slideshow-maker",
+               7: "https://www.movavi.com/screen-recorder"}
+
+    BANNER_DOWNLOAD_FILES = {1: 'MovaviVideoSuiteSetupC.exe',
+                             4: 'MovaviPicverseSetupC.exe',
+                             5: 'MovaviVideoEditorPlusSetupC.exe',
+                             6: 'MovaviSlideshowMakerSetupC.exe',
+                             7: 'MovaviScreenRecorderSetupC.exe'}
+
+
+
+
+
+
 
 # block = self.wait_of_element_located('[class="v-header-dropdown full-width dropdown-row v-main-menu-dropdown"]')
 # block = self.chrome.find_element_by_xpath('//*[@id="app"]/header/nav/div[2]/div[2]/ul/li[1]/div/div/ul[1]')

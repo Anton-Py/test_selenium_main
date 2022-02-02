@@ -15,4 +15,4 @@ def test_site_search(chrome):
     assert Locators.SEARCH_RESULT_TEXT in main_body_text, "страница не соответствует запросу"
     page.close_last_tab()
 
-# pytest tests/test_a_menu_site_search.py --tb=short -s
+# pytest tests/test_a_menu_site_search.py --tb=short -s -v

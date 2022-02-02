@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from lib.constants import Locators
+import urllib.request
 import os.path
 import time
 
@@ -78,13 +79,14 @@ class BasePage:
             self.chrome.close()
             self.chrome.switch_to.window(window_name=self.chrome.window_handles[0])
 
-    def check_downloaded_files(self, element):
+    def check_downloaded_distributiv(self, element):
         while not os.path.exists('D:\\Main_test_one_file\\test_main\\First\\download_files\\'):
             time.sleep(2)
-        # check file
-            if os.path.isfile(f'D:\\Main_test_one_file\\test_main\\First\\download_files\\{element}'):
-                print(f"File download: {element} is completed")
-            else:
-                print(f"File download: {element} is not completed")
-            time.sleep(3)
-            os.remove(f'D:\\Main_test_one_file\\test_main\\First\\download_files\\{element}')
+        # check distributiv
+        if os.path.isfile(f'D:\\Main_test_one_file\\test_main\\First\\download_files\\{element}'):
+            print(f"File download: {element} is completed")
+        else:
+            print(f"File download: {element} is not completed")
+        time.sleep(3)
+        # delete distributiv
+        os.remove(f'D:\\Main_test_one_file\\test_main\\First\\download_files\\{element}')

@@ -77,6 +77,31 @@ class MainPage(BasePage):
 
         return element
 
+    def get_banner(self, key):
+        element = self.chrome.find_element(
+            By.CSS_SELECTOR,
+            f".banner-carousel-dots > .carousel-dot:nth-child({key})"
+        )
+
+        return element
+
+    def get_button(self, key):
+        element = self.chrome.find_element(
+            By.CSS_SELECTOR,
+            f".carousel-slide:nth-child({key + 1}) > .container .btn:nth-child(1) > .link-title"
+        )
+
+        return element
+
+    def get_button_download(self, key):
+        element = self.chrome.find_element(
+            By.CSS_SELECTOR,
+            f".carousel-slide:nth-child({key + 1}) > .container .btn:nth-child(3) > .link-title"
+        )
+
+        return element
+
+
     # def check_downloaded_files(self, element):
     #     while not os.path.exists('D:\\Main_test_one_file\\test_main\\First\\download_files\\'):
     #         time.sleep(2)
