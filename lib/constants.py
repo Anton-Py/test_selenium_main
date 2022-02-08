@@ -6,7 +6,7 @@
 class Locators:
     # ссылка на сайт
     SITE = "https://movavi.com"
-
+    # SITE = "https://vdusheyko-php74.sandbox.movavi.com/"
     # проверка по селектору и что текст соответствует
     MAIN_TEXT = "span.title"
     TITLE_TEXT = "Work with multimedia anywhere"

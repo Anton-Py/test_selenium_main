@@ -1,9 +1,7 @@
 # import telebot
 # from telebot.types import Message
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from lib.constants import Locators
 import urllib.request
@@ -78,6 +76,7 @@ class BasePage:
             time.sleep(2)
             self.chrome.close()
             self.chrome.switch_to.window(window_name=self.chrome.window_handles[0])
+            self.chrome.execute_script('el = document.elementFromPoint(100, 200); el.click();')
 
     def check_downloaded_distributiv(self, element):
         while not os.path.exists('D:\\Main_test_one_file\\test_main\\First\\download_files\\'):

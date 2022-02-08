@@ -18,5 +18,5 @@ def test_links_header_other_than_search(chrome):
         url = page.chrome.current_url
         assert Locators.HEADER_TOP_SIDEBAR_LINKS[dict_window_key] in url
         page.close_last_tab()
-
+        print("Меню корректно")
 # pytest tests/test_b_menu_site_without_search.py --tb=short -s -v

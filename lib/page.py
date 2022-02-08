@@ -20,7 +20,8 @@ class MainPage(BasePage):
             .key_up(Keys.CONTROL) \
             .perform()
         time.sleep(4)
-        pyautogui.click()
+        self.chrome.execute_script('el = document.elementFromPoint(100, 200); el.click();')
+        # pyautogui.click()
 
     def tap_tag(self, tag_name):
         element = self.wait_of_element_located(tag_name)

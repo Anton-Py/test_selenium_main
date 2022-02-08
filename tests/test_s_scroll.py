@@ -3,12 +3,13 @@ from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.common.by import By
 from lib.constants import Locators
 from lib.page import MainPage
-import pyautogui
+# import pyautogui
 import time
-import os.path
-import urllib.request
+# import os.path
+# import urllib.request
 
-# скролл страницы до 4 кругляжков и проверка каждого на переход в продукт и что продукт скачивается
+
+# скролл страницы до 4 кругляжков и проверка каждого на переход в продукт и что продукт скачивается, папка чекается и очищается
 def test_scroll_main_page(chrome):
     page = MainPage(chrome)
     page.go_to_site()
@@ -16,10 +17,12 @@ def test_scroll_main_page(chrome):
     page.chrome.execute_script("window.scrollBy(0,1030)")
     # time.sleep(1)
     for key in range(Locators.NUMBER_OF_ROUNDS):
-        pyautogui.click()
+        # pyautogui.click()
+        page.chrome.execute_script('el = document.elementFromPoint(100, 200); el.click();')
         page.wait_of_element_located(Locators.LEARN_MORE_DICT[key]).click()
         time.sleep(2)
-        pyautogui.click()
+        page.chrome.execute_script('el = document.elementFromPoint(100, 200); el.click();')
+        # pyautogui.click()
         button = page.wait_of_element_located(Locators.LEARN_MORE_DICT_CSS_SELECTOR[key])
         page.tap_element(button)
         page.switch_to_second_tab()
@@ -42,4 +45,3 @@ def test_scroll_main_page(chrome):
 
 # pytest tests/test_s_scroll.py --disable-warnings --tb=short -s -v
 # pytest tests --disable-warnings --tb=short -s
-
